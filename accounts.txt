@@ -21,3 +21,9 @@ Gob2YEihj5yir4YEkfa28HvwAFr3dPE7P4fvuUSsyZU5
 
 token
 CBpVBayoRkT7Jzpt3NqEVHf7Co6Q5uCYkDEa9h4o18jq
+
+-------------------------------------------------------
+>dev net
+mint
+DWsBxBMpChPFK2M32qtPVAPTxcRGLEcNaJPTWHyHcHUn
+
