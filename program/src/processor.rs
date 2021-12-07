@@ -58,12 +58,6 @@ impl Processor {
             return Err(ProgramError::IncorrectProgramId);
         }
         let token_program = next_account_info(account_info_iter)?;
-        // let escrow_account = next_account_info(account_info_iter)?; //deleted
-        // let rent = &Rent::from_account_info(next_account_info(account_info_iter)?)?;
-        //
-        // if !rent.is_exempt(escrow_account.lamports(), escrow_account.data_len()) {
-        //     return Err(EscrowError::NotRentExempt.into());
-        // }
 
         msg!("Transfer the token to Bob - start");
         let transfer_to_initializer_ix = spl_token::instruction::transfer(
