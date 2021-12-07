@@ -35,18 +35,22 @@ export const HomeView = () => {
     const { publicKey: walletPubkey } = wallet;
 
     const [metadataToken, setMetadataToken] = useState(tokenPublicKey);
-    const [storeId, setStoreId] = useState('');
+    const [aliceToken, setAliceToken] = useState('C9bYQqtWN76Sc6w5kEvVUyFmpgZdZicy6NVHSiydu5Uk');
+    const [bobToken, setBobToken] = useState('FkPoxAXoYWLBapo6cZWBcpUJcpTRADAZyaqTSaWfEGGB');
+    const [serviceToken, setServiceToken] = useState('CBpVBayoRkT7Jzpt3NqEVHf7Co6Q5uCYkDEa9h4o18jq');
+    const [amount, setAmount] = useState(100);
+    const [programId, setProgramId] = useState("7K59sz2gbhCe7LLUX5zBnvu1ERbYx3rpvz3Wo6QtRCdQ");
 
     const onTransfer = async () => {
         //Alice private key
         let alicePrivateKey = "78,35,155,11,208,244,57,43,77,145,90,90,202,226,145,63,190,19,247,63,147,37,195,137,46,166,128,153,123,239,156,243,69,206,204,231,116,158,95,159,159,90,238,16,123,241,52,54,187,180,231,132,113,220,136,249,129,98,233,28,62,2,227,202";
-        let aliceToken = "C9bYQqtWN76Sc6w5kEvVUyFmpgZdZicy6NVHSiydu5Uk"; //X token acc
-        let amount = 121;
-        let programIdString = "7K59sz2gbhCe7LLUX5zBnvu1ERbYx3rpvz3Wo6QtRCdQ";
+        // let aliceToken = "C9bYQqtWN76Sc6w5kEvVUyFmpgZdZicy6NVHSiydu5Uk"; //X token acc
+        // let amount = 121;
+        // let programIdString = "7K59sz2gbhCe7LLUX5zBnvu1ERbYx3rpvz3Wo6QtRCdQ";
 
-        let bobToken = "FkPoxAXoYWLBapo6cZWBcpUJcpTRADAZyaqTSaWfEGGB";
+        // let bobToken = "FkPoxAXoYWLBapo6cZWBcpUJcpTRADAZyaqTSaWfEGGB";
 
-        let serviceToken = "CBpVBayoRkT7Jzpt3NqEVHf7Co6Q5uCYkDEa9h4o18jq";
+        // let serviceToken = "CBpVBayoRkT7Jzpt3NqEVHf7Co6Q5uCYkDEa9h4o18jq";
 
         const aliceTokenPubkey = new PublicKey(aliceToken);
 
@@ -77,63 +81,8 @@ export const HomeView = () => {
             console.log("bob", (bobTokenInfo1.value!.data as ParsedAccountData).parsed.info.tokenAmount.amount);
             console.log("service", (serviceTokenInfo1.value!.data as ParsedAccountData).parsed.info.tokenAmount.amount);
 
-            // console.log("Step2: ");
-            // const tempTokenAccount = new Account();
-            // let paramsForTempToken = {
-            //     programId: TOKEN_PROGRAM_ID,
-            //     space: AccountLayout.span,
-            //     lamports: await connection.getMinimumBalanceForRentExemption(AccountLayout.span, 'singleGossip'),
-            //     fromPubkey: aliceAccount.publicKey,
-            //     newAccountPubkey: tempTokenAccount.publicKey
-            // }
-            // console.log("Step2 - 1 create Instruction to create temp account for X Token");
-            // console.log("paramsForTempToken", paramsForTempToken, "temp account", tempTokenAccount.publicKey.toBase58());
-            // const createTempTokenAccountIx = SystemProgram.createAccount(paramsForTempToken);
-            // console.log("createTempTokenAccountIx", createTempTokenAccountIx);
-
-            // console.log("Step2 - 2 create Instruction to initialize temp account"); //TransactionInstruction
-            // const initTempAccountIx = Token.createInitAccountInstruction(TOKEN_PROGRAM_ID, XTokenMintAccountPubkey, tempTokenAccount.publicKey, initializerAccount.publicKey);
-            // console.log("initTempAccountIx: TransactionInstruction", initTempAccountIx);
-            //
-            // console.log("Step2 - 3 create Instruction to transfer the token from X Token to temp token"); //TransactionInstruction
-            // const transferXTokensToTempAccIx = Token
-            //     .createTransferInstruction(TOKEN_PROGRAM_ID, initializerXTokenAccountPubkey, tempTokenAccount.publicKey, initializerAccount.publicKey, [], amountXTokensToSendToEscrow);
-            // console.log("transferXTokensToTempAccIx: TransactionInstruction", initTempAccountIx);
-
-
-            // console.log("Step3 Send Transaction");
-            // const tx1 = new Transaction()
-            //     .add(createTempTokenAccountIx, initTempAccountIx, transferXTokensToTempAccIx);
-            // await connection.sendTransaction(tx1,
-            //     [initializerAccount, tempTokenAccount],
-            //     {skipPreflight: false, preflightCommitment: 'singleGossip'});
-            //
-            // await new Promise((resolve) => setTimeout(resolve, 1000));
-            //
-            // let parsedTempAccount = (await connection.getParsedAccountInfo(tempTokenAccount.publicKey, 'singleGossip'))!;
-            // let parsedInitializerAccount = (await connection.getParsedAccountInfo(initializerXTokenAccountPubkey, 'singleGossip'))!;
-            // parsedXTokenMintAccount = (await connection.getParsedAccountInfo(XTokenMintAccountPubkey, 'singleGossip'));
-            // console.log("parsedTempAccount: ", parsedTempAccount, "parsedInitializerAccount: ", parsedInitializerAccount, "parsedXTokenMintAccount", parsedXTokenMintAccount);
-            //
-            // return;
-            //
-            // console.log("Step2 - 4 create Instruction to create Escrow Account"); //TransactionInstruction
-            // const escrowAccount = new Account();
-            // const escrowProgramId = new PublicKey(escrowProgramIdString);
-            //
-            // const createEscrowAccountIx = SystemProgram.createAccount({
-            //     space: ESCROW_ACCOUNT_DATA_LAYOUT.span,
-            //     lamports: await connection.getMinimumBalanceForRentExemption(ESCROW_ACCOUNT_DATA_LAYOUT.span, 'singleGossip'),
-            //     fromPubkey: initializerAccount.publicKey,
-            //     newAccountPubkey: escrowAccount.publicKey,
-            //     programId: escrowProgramId
-            // });
-            // console.log("createEscrowAccountIx: TransactionInstruction", createEscrowAccountIx);
-
-            const programId = new PublicKey(programIdString);
-            console.log("Step2 - 5 create Instruction to InitEscrow"); //TransactionInstruction
             const initEscrowIx = new TransactionInstruction({
-                programId: programId,
+                programId: new PublicKey(programId),
                 keys: [
                     {pubkey: aliceAccount.publicKey, isSigner: true, isWritable: false},
                     {pubkey: aliceTokenPubkey, isSigner: false, isWritable: true},

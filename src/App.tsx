@@ -36,17 +36,15 @@ function App() {
         getSolletExtensionWallet({ network }),
     ], [network]);
 
-    return <HomeView/>;
-    /*return (
-
-        // <ConnectionProvider endpoint={endpoint}>
-        //     <WalletProvider wallets={wallets} autoConnect>
-        //         <WalletModalProvider>
+    return (
+        <ConnectionProvider endpoint={endpoint}>
+            <WalletProvider wallets={wallets} autoConnect>
+                <WalletModalProvider>
                     <HomeView/>
-        {/!*        </WalletModalProvider>*!/}
-        {/!*    </WalletProvider>*!/}
-        {/!*</ConnectionProvider>*!/}
-    )*/;
+                </WalletModalProvider>
+            </WalletProvider>
+        </ConnectionProvider>
+    );
 }
 
 export default App;
