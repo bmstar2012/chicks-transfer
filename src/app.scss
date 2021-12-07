@@ -1,10 +1,11 @@
-.App {
+.container {
   margin: 2rem;
+  min-width: 30rem!important;
 }
 
 .container-metadata {
   input {
-    width: 100%;
+    width: 40rem;
     font-size: 1.2rem;
     margin-top: 1rem;
   }
